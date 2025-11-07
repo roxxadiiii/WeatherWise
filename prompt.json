@@ -1,0 +1,1858 @@
+{
+  "projectNames": {
+    "description": "30 best suitable names for this weather forecast dashboard project",
+    "options": [
+      "SkyLens",
+      "WeatherPulse",
+      "AtmosView",
+      "ClimateHub",
+      "ForecastFlow",
+      "SkyWatch Pro",
+      "WeatherWise",
+      "MeteoBoard",
+      "CloudCast",
+      "WeatherVue",
+      "SkyScan",
+      "ClimaDash",
+      "AeroWeather",
+      "StormTracker",
+      "WeatherNow",
+      "SkyMetrics",
+      "ForecastHub",
+      "WeatherScope",
+      "AtmosTrack",
+      "ClimateView",
+      "SkyForge",
+      "WeatherBeam",
+      "MeteoMind",
+      "CloudSense",
+      "WeatherLive",
+      "HorizonCast",
+      "SkySphere",
+      "WeatherPro Dashboard",
+      "AtmosBoard",
+      "ClimateStream"
+    ],
+    "recommended": "SkyLens"
+  },
+
+  "projectMetadata": {
+    "name": {
+      "question": "What is the project name?",
+      "type": "string",
+      "required": true,
+      "default": "Weather Forecast Dashboard",
+      "validation": "Must be between 3-50 characters"
+    },
+    "version": {
+      "question": "What is the initial version number?",
+      "type": "string",
+      "default": "1.0.0",
+      "format": "semantic versioning (x.y.z)"
+    },
+    "description": {
+      "question": "What is the project description?",
+      "type": "textarea",
+      "default": "A real-time weather forecast dashboard with live data from OpenWeatherMap API, featuring charts, geolocation, and detailed weather metrics",
+      "maxLength": 500
+    },
+    "author": {
+      "question": "Who is the author/developer?",
+      "type": "string",
+      "required": false
+    },
+    "license": {
+      "question": "What license should the project use?",
+      "type": "select",
+      "options": [
+        "MIT",
+        "Apache 2.0",
+        "GPL-3.0",
+        "BSD-3-Clause",
+        "Proprietary",
+        "None"
+      ],
+      "default": "MIT"
+    }
+  },
+
+  "technicalStack": {
+    "framework": {
+      "question": "Which JavaScript framework/library should be used?",
+      "type": "select",
+      "options": ["React", "Vue.js", "Svelte", "Angular", "Vanilla JavaScript"],
+      "default": "React",
+      "required": true,
+      "note": "This determines the entire project structure"
+    },
+    "buildTool": {
+      "question": "Which build tool should be used?",
+      "type": "select",
+      "options": [
+        "Vite",
+        "Create React App",
+        "Next.js",
+        "Webpack",
+        "Parcel",
+        "None"
+      ],
+      "default": "Vite",
+      "note": "Affects build speed and configuration"
+    },
+    "cssFramework": {
+      "question": "Which CSS framework/approach should be used?",
+      "type": "select",
+      "options": [
+        "Tailwind CSS",
+        "Bootstrap",
+        "Material-UI",
+        "Styled Components",
+        "CSS Modules",
+        "Plain CSS",
+        "SCSS"
+      ],
+      "default": "Tailwind CSS",
+      "required": true
+    },
+    "chartingLibrary": {
+      "question": "Which charting library should be used for data visualization?",
+      "type": "select",
+      "options": [
+        "Recharts",
+        "Chart.js",
+        "D3.js",
+        "ApexCharts",
+        "Victory",
+        "Plotly"
+      ],
+      "default": "Recharts",
+      "required": true,
+      "note": "Recharts works best with React"
+    },
+    "iconLibrary": {
+      "question": "Which icon library should be used?",
+      "type": "select",
+      "options": [
+        "Lucide React",
+        "React Icons",
+        "Font Awesome",
+        "Material Icons",
+        "Heroicons",
+        "Custom SVG"
+      ],
+      "default": "Lucide React",
+      "required": true
+    },
+    "stateManagement": {
+      "question": "Should state management library be used?",
+      "type": "select",
+      "options": [
+        "React Hooks (useState/useEffect)",
+        "Redux",
+        "Zustand",
+        "Recoil",
+        "MobX",
+        "Context API",
+        "None"
+      ],
+      "default": "React Hooks (useState/useEffect)",
+      "note": "For MVP, React Hooks are sufficient"
+    },
+    "typescript": {
+      "question": "Should TypeScript be used instead of JavaScript?",
+      "type": "boolean",
+      "default": false,
+      "note": "Adds type safety but increases complexity"
+    },
+    "linting": {
+      "question": "Should code linting be configured?",
+      "type": "boolean",
+      "default": true,
+      "linter": "ESLint"
+    },
+    "formatting": {
+      "question": "Should code formatting be configured?",
+      "type": "boolean",
+      "default": true,
+      "formatter": "Prettier"
+    }
+  },
+
+  "apiConfiguration": {
+    "provider": {
+      "question": "Which weather API provider should be used?",
+      "type": "select",
+      "options": [
+        "OpenWeatherMap",
+        "WeatherAPI.com",
+        "Weatherbit",
+        "AccuWeather",
+        "Visual Crossing",
+        "Custom"
+      ],
+      "default": "OpenWeatherMap",
+      "required": true,
+      "note": "OpenWeatherMap offers free tier with 1000 calls/day"
+    },
+    "apiKey": {
+      "question": "What is the API key?",
+      "type": "password",
+      "required": true,
+      "placeholder": "Enter your OpenWeatherMap API key",
+      "validation": "Must be valid API key format",
+      "helpUrl": "https://openweathermap.org/api",
+      "note": "Keep this secret, use environment variables"
+    },
+    "apiEndpoints": {
+      "currentWeather": {
+        "question": "Should current weather endpoint be used?",
+        "type": "boolean",
+        "default": true,
+        "endpoint": "/data/2.5/weather"
+      },
+      "forecast": {
+        "question": "Should forecast endpoint be used?",
+        "type": "boolean",
+        "default": true,
+        "endpoint": "/data/2.5/forecast"
+      },
+      "oneCall": {
+        "question": "Should One Call API be used (requires subscription)?",
+        "type": "boolean",
+        "default": false,
+        "endpoint": "/data/3.0/onecall",
+        "note": "Provides hourly, daily, alerts in one call"
+      },
+      "airPollution": {
+        "question": "Should air pollution data be fetched?",
+        "type": "boolean",
+        "default": false,
+        "endpoint": "/data/2.5/air_pollution"
+      },
+      "weatherAlerts": {
+        "question": "Should weather alerts be fetched?",
+        "type": "boolean",
+        "default": false,
+        "note": "Available in One Call API only"
+      }
+    },
+    "requestSettings": {
+      "timeout": {
+        "question": "What should be the API request timeout (in milliseconds)?",
+        "type": "number",
+        "default": 10000,
+        "min": 3000,
+        "max": 30000,
+        "unit": "ms"
+      },
+      "retryAttempts": {
+        "question": "How many times should failed requests be retried?",
+        "type": "number",
+        "default": 3,
+        "min": 0,
+        "max": 5
+      },
+      "cacheEnabled": {
+        "question": "Should API responses be cached?",
+        "type": "boolean",
+        "default": true,
+        "note": "Reduces API calls and costs"
+      },
+      "cacheDuration": {
+        "question": "How long should cached data be valid (in minutes)?",
+        "type": "number",
+        "default": 10,
+        "min": 5,
+        "max": 60,
+        "dependsOn": "cacheEnabled",
+        "unit": "minutes"
+      },
+      "rateLimiting": {
+        "question": "Should rate limiting be implemented on frontend?",
+        "type": "boolean",
+        "default": true,
+        "note": "Prevents exceeding API quotas"
+      }
+    }
+  },
+
+  "locationConfiguration": {
+    "geolocation": {
+      "enabled": {
+        "question": "Should automatic geolocation be enabled?",
+        "type": "boolean",
+        "default": true,
+        "required": true,
+        "note": "Requests user's location on first load"
+      },
+      "askPermission": {
+        "question": "Should user be asked for permission before accessing location?",
+        "type": "boolean",
+        "default": true,
+        "dependsOn": "geolocation.enabled"
+      },
+      "fallbackBehavior": {
+        "question": "What should happen if geolocation is denied?",
+        "type": "select",
+        "options": [
+          "Use default city",
+          "Prompt user to enter city",
+          "Show error message",
+          "Use IP-based location"
+        ],
+        "default": "Use default city"
+      },
+      "accuracy": {
+        "question": "What level of location accuracy is needed?",
+        "type": "select",
+        "options": [
+          "High accuracy (GPS)",
+          "Balanced",
+          "Low accuracy (faster)",
+          "City-level only"
+        ],
+        "default": "City-level only",
+        "note": "Higher accuracy drains battery"
+      }
+    },
+    "defaultLocation": {
+      "city": {
+        "question": "What should be the default city if geolocation fails?",
+        "type": "string",
+        "default": "London",
+        "required": true,
+        "examples": ["London", "New York", "Tokyo", "Paris", "Sydney"]
+      },
+      "country": {
+        "question": "What is the default country code?",
+        "type": "string",
+        "default": "GB",
+        "format": "ISO 3166-1 alpha-2",
+        "examples": ["US", "GB", "JP", "FR", "AU"]
+      },
+      "coordinates": {
+        "question": "Should default coordinates be specified?",
+        "type": "boolean",
+        "default": false,
+        "latitude": null,
+        "longitude": null
+      }
+    },
+    "searchFunctionality": {
+      "enabled": {
+        "question": "Should users be able to search for different cities?",
+        "type": "boolean",
+        "default": true,
+        "required": true
+      },
+      "searchType": {
+        "question": "What type of search should be implemented?",
+        "type": "select",
+        "options": [
+          "City name only",
+          "City with country",
+          "Coordinates",
+          "Zip code",
+          "All methods"
+        ],
+        "default": "City name only",
+        "dependsOn": "searchFunctionality.enabled"
+      },
+      "autocomplete": {
+        "question": "Should search have autocomplete suggestions?",
+        "type": "boolean",
+        "default": false,
+        "note": "Requires additional API calls"
+      },
+      "recentSearches": {
+        "question": "Should recent searches be saved?",
+        "type": "boolean",
+        "default": true,
+        "maxItems": 5
+      },
+      "favoriteLocations": {
+        "question": "Should users be able to save favorite locations?",
+        "type": "boolean",
+        "default": false,
+        "maxFavorites": 10
+      }
+    },
+    "multipleLocations": {
+      "question": "Should multiple locations be displayable simultaneously?",
+      "type": "boolean",
+      "default": false,
+      "maxLocations": 3,
+      "note": "Increases API usage"
+    }
+  },
+
+  "displayConfiguration": {
+    "units": {
+      "temperature": {
+        "question": "What temperature unit should be displayed by default?",
+        "type": "select",
+        "options": ["Celsius", "Fahrenheit", "Kelvin"],
+        "default": "Celsius",
+        "required": true,
+        "apiParam": {
+          "Celsius": "metric",
+          "Fahrenheit": "imperial",
+          "Kelvin": "standard"
+        }
+      },
+      "windSpeed": {
+        "question": "What wind speed unit should be displayed?",
+        "type": "select",
+        "options": ["m/s", "km/h", "mph", "knots"],
+        "default": "m/s"
+      },
+      "pressure": {
+        "question": "What pressure unit should be displayed?",
+        "type": "select",
+        "options": ["hPa", "inHg", "mmHg", "mbar"],
+        "default": "hPa"
+      },
+      "precipitation": {
+        "question": "What precipitation unit should be displayed?",
+        "type": "select",
+        "options": ["mm", "inches"],
+        "default": "mm"
+      },
+      "visibility": {
+        "question": "What visibility unit should be displayed?",
+        "type": "select",
+        "options": ["km", "miles", "meters"],
+        "default": "km"
+      },
+      "unitToggle": {
+        "question": "Should users be able to toggle between units?",
+        "type": "boolean",
+        "default": true,
+        "note": "Adds unit switcher button"
+      }
+    },
+    "dateTimeFormat": {
+      "dateFormat": {
+        "question": "What date format should be used?",
+        "type": "select",
+        "options": ["DD/MM/YYYY", "MM/DD/YYYY", "YYYY-MM-DD", "Locale default"],
+        "default": "Locale default"
+      },
+      "timeFormat": {
+        "question": "What time format should be used?",
+        "type": "select",
+        "options": ["12-hour (AM/PM)", "24-hour"],
+        "default": "12-hour (AM/PM)"
+      },
+      "timezone": {
+        "question": "Which timezone should be used for display?",
+        "type": "select",
+        "options": [
+          "Local (user's timezone)",
+          "Location timezone",
+          "UTC",
+          "Custom"
+        ],
+        "default": "Local (user's timezone)"
+      }
+    },
+    "language": {
+      "question": "What language should the interface use?",
+      "type": "select",
+      "options": [
+        "English",
+        "Spanish",
+        "French",
+        "German",
+        "Chinese",
+        "Japanese",
+        "Portuguese",
+        "Auto-detect"
+      ],
+      "default": "English",
+      "note": "Affects weather descriptions and UI text"
+    }
+  },
+
+  "currentWeatherDisplay": {
+    "enabled": {
+      "question": "Should current weather section be displayed?",
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "layout": {
+      "question": "What layout should the current weather section use?",
+      "type": "select",
+      "options": [
+        "Card",
+        "Full-width banner",
+        "Sidebar",
+        "Compact",
+        "Hero section"
+      ],
+      "default": "Card"
+    },
+    "mainMetrics": {
+      "temperature": {
+        "question": "Should current temperature be displayed?",
+        "type": "boolean",
+        "default": true,
+        "required": true,
+        "fontSize": "large"
+      },
+      "feelsLike": {
+        "question": "Should 'feels like' temperature be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "weatherCondition": {
+        "question": "Should weather condition description be displayed?",
+        "type": "boolean",
+        "default": true,
+        "capitalization": "capitalize"
+      },
+      "weatherIcon": {
+        "question": "Should weather condition icon be displayed?",
+        "type": "boolean",
+        "default": true,
+        "iconType": {
+          "question": "What type of weather icons should be used?",
+          "type": "select",
+          "options": [
+            "API icons",
+            "Custom icons",
+            "Animated icons",
+            "Icon library"
+          ],
+          "default": "Icon library"
+        },
+        "iconSize": {
+          "question": "What size should the weather icon be?",
+          "type": "select",
+          "options": ["Small", "Medium", "Large", "Extra Large"],
+          "default": "Large"
+        }
+      }
+    },
+    "additionalMetrics": {
+      "humidity": {
+        "question": "Should humidity be displayed?",
+        "type": "boolean",
+        "default": true,
+        "unit": "%"
+      },
+      "windSpeed": {
+        "question": "Should wind speed be displayed?",
+        "type": "boolean",
+        "default": true,
+        "includeDirection": true
+      },
+      "windDirection": {
+        "question": "Should wind direction be displayed?",
+        "type": "boolean",
+        "default": true,
+        "format": {
+          "question": "How should wind direction be displayed?",
+          "type": "select",
+          "options": ["Degrees", "Cardinal (N, S, E, W)", "Both", "Arrow icon"],
+          "default": "Cardinal (N, S, E, W)"
+        }
+      },
+      "pressure": {
+        "question": "Should atmospheric pressure be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "visibility": {
+        "question": "Should visibility be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "cloudiness": {
+        "question": "Should cloud coverage percentage be displayed?",
+        "type": "boolean",
+        "default": false
+      },
+      "uvIndex": {
+        "question": "Should UV index be displayed?",
+        "type": "boolean",
+        "default": false,
+        "note": "Requires One Call API"
+      },
+      "dewPoint": {
+        "question": "Should dew point be displayed?",
+        "type": "boolean",
+        "default": false
+      },
+      "precipitation": {
+        "question": "Should precipitation amount be displayed?",
+        "type": "boolean",
+        "default": false,
+        "timeframe": "1 hour"
+      }
+    },
+    "sunTimes": {
+      "sunrise": {
+        "question": "Should sunrise time be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "sunset": {
+        "question": "Should sunset time be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "sunIcon": {
+        "question": "Should sun/moon icons be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "dayLength": {
+        "question": "Should total daylight duration be calculated and displayed?",
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "location": {
+      "cityName": {
+        "question": "Should city name be displayed?",
+        "type": "boolean",
+        "default": true,
+        "fontSize": "large"
+      },
+      "country": {
+        "question": "Should country name/code be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "coordinates": {
+        "question": "Should latitude/longitude be displayed?",
+        "type": "boolean",
+        "default": false
+      },
+      "locationIcon": {
+        "question": "Should location pin icon be displayed?",
+        "type": "boolean",
+        "default": true
+      }
+    },
+    "timestamps": {
+      "lastUpdated": {
+        "question": "Should last update time be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "currentTime": {
+        "question": "Should current time at location be displayed?",
+        "type": "boolean",
+        "default": false
+      },
+      "dataTimestamp": {
+        "question": "Should API data timestamp be displayed?",
+        "type": "boolean",
+        "default": false
+      }
+    }
+  },
+
+  "forecastConfiguration": {
+    "enabled": {
+      "question": "Should forecast section be displayed?",
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "forecastType": {
+      "question": "What type of forecast should be displayed?",
+      "type": "multiselect",
+      "options": ["Hourly", "Daily", "3-hour intervals", "Weekly"],
+      "default": ["Daily"],
+      "note": "Multiple can be selected"
+    },
+    "hourlyForecast": {
+      "enabled": {
+        "question": "Should hourly forecast be displayed?",
+        "type": "boolean",
+        "default": false
+      },
+      "hours": {
+        "question": "How many hours of forecast should be shown?",
+        "type": "number",
+        "default": 24,
+        "min": 6,
+        "max": 48,
+        "step": 3,
+        "dependsOn": "hourlyForecast.enabled"
+      },
+      "interval": {
+        "question": "What should be the interval between data points?",
+        "type": "select",
+        "options": ["1 hour", "3 hours", "6 hours"],
+        "default": "3 hours"
+      },
+      "layout": {
+        "question": "How should hourly forecast be laid out?",
+        "type": "select",
+        "options": ["Horizontal scroll", "Grid", "List", "Chart only"],
+        "default": "Horizontal scroll"
+      }
+    },
+    "dailyForecast": {
+      "enabled": {
+        "question": "Should daily forecast be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "days": {
+        "question": "How many days of forecast should be shown?",
+        "type": "number",
+        "default": 5,
+        "min": 1,
+        "max": 16,
+        "dependsOn": "dailyForecast.enabled",
+        "note": "Free tier typically supports 5 days"
+      },
+      "layout": {
+        "question": "How should daily forecast be laid out?",
+        "type": "select",
+        "options": ["Cards grid", "List view", "Table", "Horizontal scroll"],
+        "default": "Cards grid"
+      },
+      "showDayName": {
+        "question": "Should day names be displayed (e.g., Monday, Tuesday)?",
+        "type": "boolean",
+        "default": true
+      },
+      "showDate": {
+        "question": "Should dates be displayed (e.g., Jan 15)?",
+        "type": "boolean",
+        "default": true
+      }
+    },
+    "forecastMetrics": {
+      "highTemperature": {
+        "question": "Should high/max temperature be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "lowTemperature": {
+        "question": "Should low/min temperature be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "avgTemperature": {
+        "question": "Should average temperature be displayed?",
+        "type": "boolean",
+        "default": false
+      },
+      "weatherCondition": {
+        "question": "Should weather condition be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "precipitationChance": {
+        "question": "Should precipitation probability be displayed?",
+        "type": "boolean",
+        "default": true,
+        "unit": "%"
+      },
+      "precipitationAmount": {
+        "question": "Should precipitation amount be displayed?",
+        "type": "boolean",
+        "default": false
+      },
+      "humidity": {
+        "question": "Should humidity be displayed in forecast?",
+        "type": "boolean",
+        "default": false
+      },
+      "windSpeed": {
+        "question": "Should wind speed be displayed in forecast?",
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "expandableDetails": {
+      "question": "Should forecast items be expandable to show more details?",
+      "type": "boolean",
+      "default": false,
+      "note": "Click to reveal detailed hourly breakdown"
+    }
+  },
+
+  "chartsConfiguration": {
+    "enabled": {
+      "question": "Should charts/graphs be displayed?",
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "temperatureChart": {
+      "enabled": {
+        "question": "Should temperature chart be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "chartType": {
+        "question": "What type of chart should be used for temperature?",
+        "type": "select",
+        "options": ["Line", "Area", "Bar", "Spline"],
+        "default": "Line",
+        "dependsOn": "temperatureChart.enabled"
+      },
+      "showHighLow": {
+        "question": "Should both high and low temperatures be shown on chart?",
+        "type": "boolean",
+        "default": false,
+        "note": "Shows two lines/areas"
+      },
+      "dataPoints": {
+        "question": "How many data points should be shown on temperature chart?",
+        "type": "number",
+        "default": 5,
+        "min": 3,
+        "max": 16
+      },
+      "color": {
+        "question": "What color should the temperature chart use?",
+        "type": "color",
+        "default": "#ef4444",
+        "options": ["#ef4444", "#f59e0b", "#3b82f6", "#8b5cf6", "#ec4899"]
+      },
+      "gradient": {
+        "question": "Should the chart use gradient colors?",
+        "type": "boolean",
+        "default": true
+      }
+    },
+    "humidityChart": {
+      "enabled": {
+        "question": "Should humidity chart be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "chartType": {
+        "question": "What type of chart should be used for humidity?",
+        "type": "select",
+        "options": ["Bar", "Line", "Area"],
+        "default": "Bar",
+        "dependsOn": "humidityChart.enabled"
+      },
+      "color": {
+        "question": "What color should the humidity chart use?",
+        "type": "color",
+        "default": "#3b82f6",
+        "options": ["#3b82f6", "#06b6d4", "#10b981", "#8b5cf6"]
+      }
+    },
+    "windSpeedChart": {
+      "enabled": {
+        "question": "Should wind speed chart be displayed?",
+        "type": "boolean",
+        "default": false
+      },
+      "chartType": {
+        "question": "What type of chart should be used for wind speed?",
+        "type": "select",
+        "options": ["Line", "Bar", "Area"],
+        "default": "Line"
+      },
+      "color": {
+        "question": "What color should the wind speed chart use?",
+        "type": "color",
+        "default": "#10b981"
+      }
+    },
+    "precipitationChart": {
+      "enabled": {
+        "question": "Should precipitation chart be displayed?",
+        "type": "boolean",
+        "default": false
+      },
+      "chartType": {
+        "question": "What type of chart should be used for precipitation?",
+        "type": "select",
+        "options": ["Bar", "Area", "Line"],
+        "default": "Bar"
+      },
+      "color": {
+        "question": "What color should the precipitation chart use?",
+        "type": "color",
+        "default": "#06b6d4"
+      }
+    },
+    "pressureChart": {
+      "enabled": {
+        "question": "Should pressure chart be displayed?",
+        "type": "boolean",
+        "default": false
+      },
+      "chartType": {
+        "question": "What type of chart should be used for pressure?",
+        "type": "select",
+        "options": ["Line", "Area"],
+        "default": "Line"
+      }
+    },
+    "chartSettings": {
+      "showGrid": {
+        "question": "Should chart grid lines be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "showAxes": {
+        "question": "Should chart axes be displayed?",
+        "type": "boolean",
+        "default": true
+      },
+      "showTooltip": {
+        "question": "Should tooltips be shown on hover?",
+        "type": "boolean",
+        "default": true
+      },
+      "showLegend": {
+        "question": "Should chart legend be displayed?",
+        "type": "boolean",
+        "default": false
+      },
+      "responsive": {
+        "question": "Should charts be responsive to screen size?",
+        "type": "boolean",
+        "default": true
+      },
+      "height": {
+        "question": "What should be the default chart height (in pixels)?",
+        "type": "number",
+        "default": 200,
+        "min": 150,
+        "max": 500
+      },
+      "animation": {
+        "question": "Should charts animate on load?",
+        "type": "boolean",
+        "default": true
+      }
+    }
+  },
+
+  "uiDesign": {
+    "theme": {
+      "colorScheme": {
+        "question": "What color scheme should the dashboard use?",
+        "type": "select",
+        "options": [
+          "Gradient Blue",
+          "Gradient Purple",
+          "Gradient Sunset",
+          "Dark Mode",
+          "Light Mode",
+          "Auto (system preference)",
+          "Custom"
+        ],
+        "default": "Gradient Blue",
+        "required": true
+      },
+      "primaryColor": {
+        "question": "What should be the primary brand color?",
+        "type": "color",
+        "default": "#3b82f6",
+        "note": "Used for buttons, links, accents"
+      },
+      "secondaryColor": {
+        "question": "What should be the secondary color?",
+        "type": "color",
+        "default": "#8b5cf6"
+      },
+      "backgroundColor": {
+        "question": "What should be the main background color?",
+        "type": "color",
+        "default": "#f3f4f6",
+        "note": "For light themes"
+      },
+      "darkModeSupport": {
+        "question": "Should dark mode be available?",
+        "type": "boolean",
+        "default": true
+      },
+      "themeToggle": {
+        "question": "Should users be able to toggle between themes?",
+        "type": "boolean",
+        "default": true,
+        "dependsOn": "darkModeSupport"
+      }
+    },
+    "layout": {
+      "type": {
+        "question": "What layout structure should be used?",
+        "type": "select",
+        "options": [
+          "Single column",
+          "Two columns",
+          "Grid (responsive)",
+          "Dashboard style",
+          "Card-based"
+        ],
+        "default": "Grid (responsive)"
+      },
+      "maxWidth": {
+        "question": "What should be the maximum width of the content area?",
+        "type": "select",
+        "options": ["1024px", "1280px", "1536px", "Full width", "Custom"],
+        "default": "1280px"
+      },
+      "spacing": {
+        "question": "What spacing scale should be used between sections?",
+        "type": "select",
+        "options": ["Compact", "Normal", "Relaxed", "Spacious"],
+        "default": "Normal"
+      },
+      "containerStyle": {
+        "question": "What style should containers/cards use?",
+        "type": "select",
+        "options": [
+          "Flat",
+          "Elevated (shadow)",
+          "Bordered",
+          "Glassmorphism",
+          "Neumorphism"
+        ],
+        "default": "Glassmorphism"
+      },
+      "borderRadius": {
+        "question": "What border radius should be used for cards/buttons?",
+        "type": "select",
+        "options": [
+          "None (0px)",
+          "Small (4px)",
+          "Medium (8px)",
+          "Large (16px)",
+          "Extra Large (24px)"
+        ],
+        "default": "Large (16px)"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "question": "What font family should be used?",
+        "type": "select",
+        "options": [
+          "System fonts (default)",
+          "Inter",
+          "Roboto",
+          "Open Sans",
+          "Poppins",
+          "Montserrat",
+          "Custom Google Font"
+        ],
+        "default": "System fonts (default)"
+      },
+      "fontSize": {
+        "question": "What should be the base font size?",
+        "type": "select",
+        "options": ["14px", "16px", "18px"],
+        "default": "16px"
+      },
+      "fontWeight": {
+        "question": "What should be the default font weight?",
+        "type": "select",
+        "options": [
+          "Light (300)",
+          "Normal (400)",
+          "Medium (500)",
+          "Semibold (600)"
+        ],
+        "default": "Normal (400)"
+      },
+      "headingStyle": {
+        "question": "What style should headings use?",
+        "type": "select",
+        "options": ["Bold", "Semibold", "Medium", "Normal with larger size"],
+        "default": "Bold"
+      }
+    },
+    "visualEffects": {
+      "glassmorphism": {
+        "question": "Should glassmorphism effect be used?",
+        "type": "boolean",
+        "default": true,
+        "note": "Frosted glass effect with blur"
+      },
+      "shadows": {
+        "question": "Should shadows be used on cards/elements?",
+        "type": "boolean",
+        "default": true
+      },
+      "animations": {
+        "question": "Should UI animations be enabled?",
+        "type": "boolean",
+        "default": true
+      },
+      "transitions": {
+        "question": "Should smooth transitions be used?",
+        "type": "boolean",
+        "default": true,
+        "duration": "300ms"
+      },
+      "hoverEffects": {
+        "question": "Should hover effects be enabled on interactive elements?",
+        "type": "boolean",
+        "default": true
+      },
+      "backgroundPattern": {
+        "question": "Should a background pattern/texture be used?",
+        "type": "select",
+        "options": [
+          "None",
+          "Gradient",
+          "Particles",
+          "Animated clouds",
+          "Geometric pattern",
+          "Custom"
+        ],
+        "default": "Gradient"
+      }
+    },
+    "responsiveDesign": {
+      "mobileOptimized": {
+        "question": "Should the design be optimized for mobile devices?",
+        "type": "boolean",
+        "default": true,
+        "required": true
+      },
+      "tabletOptimized": {
+        "question": "Should the design be optimized for tablet devices?",
+        "type": "boolean",
+        "default": true
+      },
+      "breakpoints": {
+        "question": "What breakpoints should be used for responsive design?",
+        "type": "select",
+        "options": ["Tailwind default", "Bootstrap default", "Custom"],
+        "default": "Tailwind default",
+        "note": "sm: 640px, md: 768px, lg: 1024px, xl: 1280px"
+      },
+      "mobileMenu": {
+        "question": "How should navigation work on mobile?",
+        "type": "select",
+        "options": [
+          "Hamburger menu",
+          "Bottom navigation",
+          "Tabs",
+          "Same as desktop"
+        ],
+        "default": "Same as desktop"
+      }
+    },
+    "loadingStates": {
+      "showLoadingSpinner": {
+        "question": "Should a loading spinner be displayed during data fetch?",
+        "type": "boolean",
+        "default": true
+      },
+      "spinnerStyle": {
+        "question": "What style should the loading spinner use?",
+        "type": "select",
+        "options": ["Circle spinner", "Dots", "Bars", "Custom animation"],
+        "default": "Circle spinner"
+      },
+      "skeletonLoading": {
+        "question": "Should skeleton screens be used while loading?",
+        "type": "boolean",
+        "default": false,
+        "note": "Shows placeholder content structure"
+      },
+      "progressBar": {
+        "question": "Should a progress bar be shown during loading?",
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "errorStates": {
+      "showErrorMessages": {
+        "question": "Should error messages be displayed to users?",
+        "type": "boolean",
+        "default": true,
+        "required": true
+      },
+      "errorStyle": {
+        "question": "How should errors be displayed?",
+        "type": "select",
+        "options": [
+          "Alert box",
+          "Toast notification",
+          "Inline message",
+          "Modal"
+        ],
+        "default": "Alert box"
+      },
+      "retryButton": {
+        "question": "Should a retry button be shown on errors?",
+        "type": "boolean",
+        "default": true
+      },
+      "errorIcon": {
+        "question": "Should an error icon be displayed?",
+        "type": "boolean",
+        "default": true
+      }
+    }
+  },
+
+  "featuresAndFunctionality": {
+    "autoRefresh": {
+      "enabled": {
+        "question": "Should weather data automatically refresh?",
+        "type": "boolean",
+        "default": true
+      },
+      "interval": {
+        "question": "How often should data refresh (in minutes)?",
+        "type": "number",
+        "default": 15,
+        "min": 5,
+        "max": 60,
+        "dependsOn": "autoRefresh.enabled",
+        "note": "Balance between freshness and API usage"
+      },
+      "showCountdown": {
+        "question": "Should countdown to next refresh be displayed?",
+        "type": "boolean",
+        "default": false
+      },
+      "pauseWhenInactive": {
+        "question": "Should refresh pause when tab is inactive?",
+        "type": "boolean",
+        "default": true,
+        "note": "Saves API calls"
+      }
+    },
+    "manualRefresh": {
+      "enabled": {
+        "question": "Should users be able to manually refresh data?",
+        "type": "boolean",
+        "default": true
+      },
+      "buttonLocation": {
+        "question": "Where should the refresh button be located?",
+        "type": "select",
+        "options": [
+          "Header",
+          "Near city name",
+          "Floating button",
+          "Multiple locations"
+        ],
+        "default": "Header"
+      },
+      "cooldown": {
+        "question": "Should there be a cooldown period between manual refreshes?",
+        "type": "boolean",
+        "default": true,
+        "duration": 30,
+        "unit": "seconds"
+      }
+    },
+    "notifications": {
+      "enabled": {
+        "question": "Should notifications be supported?",
+        "type": "boolean",
+        "default": false
+      },
+      "browserNotifications": {
+        "question": "Should browser push notifications be used?",
+        "type": "boolean",
+        "default": false,
+        "dependsOn": "notifications.enabled"
+      },
+      "weatherAlerts": {
+        "question": "Should users be notified of weather alerts?",
+        "type": "boolean",
+        "default": false,
+        "types": ["Severe weather", "Rain", "Snow", "Temperature extremes"]
+      },
+      "customAlerts": {
+        "question": "Should users be able to set custom weather alerts?",
+        "type": "boolean",
+        "default": false,
+        "examples": [
+          "Temperature above/below threshold",
+          "Rain forecast",
+          "Wind speed"
+        ]
+      }
+    },
+    "sharing": {
+      "enabled": {
+        "question": "Should users be able to share weather data?",
+        "type": "boolean",
+        "default": false
+      },
+      "shareMethods": {
+        "question": "What sharing methods should be available?",
+        "type": "multiselect",
+        "options": [
+          "Copy link",
+          "Social media",
+          "Email",
+          "Screenshot",
+          "Export data"
+        ],
+        "default": ["Copy link"],
+        "dependsOn": "sharing.enabled"
+      },
+      "shareButton": {
+        "question": "Should a share button be prominently displayed?",
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "dataExport": {
+      "enabled": {
+        "question": "Should users be able to export weather data?",
+        "type": "boolean",
+        "default": false
+      },
+      "formats": {
+        "question": "What export formats should be supported?",
+        "type": "multiselect",
+        "options": ["CSV", "JSON", "PDF", "Excel", "Image"],
+        "default": ["JSON"],
+        "dependsOn": "dataExport.enabled"
+      }
+    },
+    "comparison": {
+      "enabled": {
+        "question": "Should users be able to compare weather between cities?",
+        "type": "boolean",
+        "default": false
+      },
+      "maxCities": {
+        "question": "How many cities can be compared simultaneously?",
+        "type": "number",
+        "default": 3,
+        "min": 2,
+        "max": 5,
+        "dependsOn": "comparison.enabled"
+      }
+    },
+    "historicalData": {
+      "enabled": {
+        "question": "Should historical weather data be shown?",
+        "type": "boolean",
+        "default": false,
+        "note": "May require premium API access"
+      },
+      "timeRange": {
+        "question": "How far back should historical data go?",
+        "type": "select",
+        "options": ["7 days", "30 days", "90 days", "1 year"],
+        "default": "7 days",
+        "dependsOn": "historicalData.enabled"
+      }
+    },
+    "weatherMaps": {
+      "enabled": {
+        "question": "Should weather maps be integrated?",
+        "type": "boolean",
+        "default": false
+      },
+      "mapTypes": {
+        "question": "What types of weather maps should be available?",
+        "type": "multiselect",
+        "options": [
+          "Precipitation",
+          "Temperature",
+          "Wind",
+          "Clouds",
+          "Pressure"
+        ],
+        "default": ["Precipitation"],
+        "dependsOn": "weatherMaps.enabled"
+      },
+      "mapProvider": {
+        "question": "Which map provider should be used?",
+        "type": "select",
+        "options": ["OpenWeatherMap", "Mapbox", "Google Maps", "Leaflet"],
+        "default": "OpenWeatherMap"
+      }
+    },
+    "widgets": {
+      "enabled": {
+        "question": "Should customizable widgets be available?",
+        "type": "boolean",
+        "default": false
+      },
+      "allowRearrange": {
+        "question": "Should users be able to rearrange widgets?",
+        "type": "boolean",
+        "default": false,
+        "dependsOn": "widgets.enabled"
+      },
+      "allowHideShow": {
+        "question": "Should users be able to hide/show specific widgets?",
+        "type": "boolean",
+        "default": false
+      }
+    }
+  },
+
+  "dataManagement": {
+    "localStorage": {
+      "enabled": {
+        "question": "Should data be stored in browser localStorage?",
+        "type": "boolean",
+        "default": true,
+        "note": "Stores preferences and cached data"
+      },
+      "storePreferences": {
+        "question": "Should user preferences be saved?",
+        "type": "boolean",
+        "default": true,
+        "items": ["Theme", "Units", "Last searched city", "Favorites"]
+      },
+      "cacheWeatherData": {
+        "question": "Should weather data be cached locally?",
+        "type": "boolean",
+        "default": true,
+        "duration": "10 minutes"
+      }
+    },
+    "cookies": {
+      "enabled": {
+        "question": "Should cookies be used?",
+        "type": "boolean",
+        "default": false
+      },
+      "cookieConsent": {
+        "question": "Should cookie consent banner be displayed?",
+        "type": "boolean",
+        "default": false,
+        "dependsOn": "cookies.enabled"
+      }
+    },
+    "sessionStorage": {
+      "enabled": {
+        "question": "Should sessionStorage be used?",
+        "type": "boolean",
+        "default": false,
+        "note": "Data cleared when browser closes"
+      }
+    },
+    "userAccounts": {
+      "enabled": {
+        "question": "Should user accounts/authentication be supported?",
+        "type": "boolean",
+        "default": false,
+        "note": "Allows saving preferences across devices"
+      },
+      "authMethod": {
+        "question": "What authentication method should be used?",
+        "type": "select",
+        "options": [
+          "Email/Password",
+          "Social login (Google, Facebook)",
+          "OAuth",
+          "None"
+        ],
+        "default": "None",
+        "dependsOn": "userAccounts.enabled"
+      }
+    }
+  },
+
+  "performanceOptimization": {
+    "lazyLoading": {
+      "question": "Should lazy loading be implemented?",
+      "type": "boolean",
+      "default": true,
+      "note": "Load components only when needed"
+    },
+    "imageOptimization": {
+      "question": "Should images be optimized?",
+      "type": "boolean",
+      "default": true,
+      "methods": ["WebP format", "Lazy loading", "Responsive images"]
+    },
+    "codeMinification": {
+      "question": "Should code be minified in production?",
+      "type": "boolean",
+      "default": true
+    },
+    "bundleOptimization": {
+      "question": "Should bundle size be optimized?",
+      "type": "boolean",
+      "default": true,
+      "methods": ["Tree shaking", "Code splitting", "Dynamic imports"]
+    },
+    "caching": {
+      "question": "Should aggressive caching strategies be used?",
+      "type": "boolean",
+      "default": true
+    },
+    "serviceWorker": {
+      "question": "Should service worker be implemented for offline support?",
+      "type": "boolean",
+      "default": false,
+      "note": "Enables PWA features"
+    }
+  },
+
+  "accessibility": {
+    "wcagCompliance": {
+      "question": "What WCAG compliance level should be targeted?",
+      "type": "select",
+      "options": ["AA (recommended)", "AAA (highest)", "A (minimum)", "None"],
+      "default": "AA (recommended)",
+      "required": true
+    },
+    "keyboardNavigation": {
+      "question": "Should full keyboard navigation be supported?",
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "screenReader": {
+      "question": "Should the interface be optimized for screen readers?",
+      "type": "boolean",
+      "default": true,
+      "ariaLabels": true,
+      "semanticHTML": true
+    },
+    "colorContrast": {
+      "question": "Should color contrast meet accessibility standards?",
+      "type": "boolean",
+      "default": true,
+      "ratio": "4.5:1 for normal text"
+    },
+    "focusIndicators": {
+      "question": "Should clear focus indicators be displayed?",
+      "type": "boolean",
+      "default": true
+    },
+    "textScaling": {
+      "question": "Should text be scalable up to 200% without breaking layout?",
+      "type": "boolean",
+      "default": true
+    },
+    "reducedMotion": {
+      "question": "Should reduced motion preferences be respected?",
+      "type": "boolean",
+      "default": true,
+      "note": "Disables animations for users who prefer reduced motion"
+    },
+    "altText": {
+      "question": "Should all images have descriptive alt text?",
+      "type": "boolean",
+      "default": true
+    },
+    "highContrastMode": {
+      "question": "Should high contrast mode be available?",
+      "type": "boolean",
+      "default": false
+    },
+    "textToSpeech": {
+      "question": "Should text-to-speech be integrated?",
+      "type": "boolean",
+      "default": false
+    }
+  },
+
+  "seoAndAnalytics": {
+    "seo": {
+      "enabled": {
+        "question": "Should SEO optimization be implemented?",
+        "type": "boolean",
+        "default": true
+      },
+      "metaTags": {
+        "question": "Should meta tags be configured?",
+        "type": "boolean",
+        "default": true,
+        "tags": ["title", "description", "keywords", "og:tags"]
+      },
+      "sitemap": {
+        "question": "Should a sitemap be generated?",
+        "type": "boolean",
+        "default": false
+      },
+      "robotsTxt": {
+        "question": "Should robots.txt be configured?",
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "analytics": {
+      "enabled": {
+        "question": "Should analytics be integrated?",
+        "type": "boolean",
+        "default": false
+      },
+      "provider": {
+        "question": "Which analytics provider should be used?",
+        "type": "select",
+        "options": [
+          "Google Analytics",
+          "Plausible",
+          "Matomo",
+          "Mixpanel",
+          "Custom",
+          "None"
+        ],
+        "default": "None",
+        "dependsOn": "analytics.enabled"
+      },
+      "trackEvents": {
+        "question": "Should user events be tracked?",
+        "type": "boolean",
+        "default": false,
+        "events": [
+          "City searches",
+          "Unit changes",
+          "Theme toggles",
+          "Refresh clicks"
+        ]
+      },
+      "privacyCompliant": {
+        "question": "Should analytics be GDPR/privacy compliant?",
+        "type": "boolean",
+        "default": true,
+        "note": "Anonymize IPs, cookie consent"
+      }
+    }
+  },
+
+  "security": {
+    "apiKeySecurity": {
+      "question": "How should API key be secured?",
+      "type": "select",
+      "options": [
+        "Environment variables",
+        "Backend proxy",
+        "Encrypted storage",
+        "Hardcoded (not recommended)"
+      ],
+      "default": "Environment variables",
+      "required": true,
+      "note": "Never expose API key in frontend code"
+    },
+    "https": {
+      "question": "Should HTTPS be enforced?",
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "cors": {
+      "question": "Should CORS be configured?",
+      "type": "boolean",
+      "default": true
+    },
+    "inputValidation": {
+      "question": "Should user input be validated and sanitized?",
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "rateLimiting": {
+      "question": "Should rate limiting be implemented?",
+      "type": "boolean",
+      "default": true,
+      "note": "Prevents API abuse"
+    },
+    "csp": {
+      "question": "Should Content Security Policy be implemented?",
+      "type": "boolean",
+      "default": false
+    }
+  },
+
+  "deployment": {
+    "hostingPlatform": {
+      "question": "Where should the application be deployed?",
+      "type": "select",
+      "options": [
+        "Vercel",
+        "Netlify",
+        "GitHub Pages",
+        "AWS",
+        "Firebase",
+        "Heroku",
+        "Custom server",
+        "Not decided yet"
+      ],
+      "default": "Not decided yet"
+    },
+    "domain": {
+      "question": "Should a custom domain be used?",
+      "type": "boolean",
+      "default": false,
+      "domainName": ""
+    },
+    "cicd": {
+      "question": "Should CI/CD pipeline be set up?",
+      "type": "boolean",
+      "default": false,
+      "platform": "GitHub Actions"
+    },
+    "environmentVariables": {
+      "question": "Should environment variables be used for configuration?",
+      "type": "boolean",
+      "default": true,
+      "required": true,
+      "variables": ["API_KEY", "NODE_ENV"]
+    }
+  },
+
+  "testing": {
+    "unitTesting": {
+      "question": "Should unit tests be written?",
+      "type": "boolean",
+      "default": false,
+      "framework": "Jest"
+    },
+    "integrationTesting": {
+      "question": "Should integration tests be written?",
+      "type": "boolean",
+      "default": false
+    },
+    "e2eTesting": {
+      "question": "Should end-to-end tests be written?",
+      "type": "boolean",
+      "default": false,
+      "framework": "Cypress"
+    },
+    "testCoverage": {
+      "question": "What should be the minimum test coverage target?",
+      "type": "select",
+      "options": ["None", "50%", "70%", "80%", "90%"],
+      "default": "None"
+    }
+  },
+
+  "documentation": {
+    "readme": {
+      "question": "Should comprehensive README be created?",
+      "type": "boolean",
+      "default": true,
+      "required": true,
+      "sections": [
+        "Installation",
+        "Usage",
+        "API Setup",
+        "Configuration",
+        "Features"
+      ]
+    },
+    "codeComments": {
+      "question": "Should code be well-commented?",
+      "type": "boolean",
+      "default": true
+    },
+    "apiDocumentation": {
+      "question": "Should API integration be documented?",
+      "type": "boolean",
+      "default": true
+    },
+    "userGuide": {
+      "question": "Should user guide be created?",
+      "type": "boolean",
+      "default": false
+    },
+    "changeLog": {
+      "question": "Should changelog be maintained?",
+      "type": "boolean",
+      "default": false
+    }
+  },
+
+  "advancedFeatures": {
+    "pwa": {
+      "question": "Should this be a Progressive Web App?",
+      "type": "boolean",
+      "default": false,
+      "features": ["Offline support", "Install prompt", "Service worker"]
+    },
+    "multiLanguage": {
+      "question": "Should multiple languages be supported?",
+      "type": "boolean",
+      "default": false,
+      "languages": ["English", "Spanish", "French", "German"]
+    },
+    "voiceControl": {
+      "question": "Should voice control be integrated?",
+      "type": "boolean",
+      "default": false,
+      "commands": ["Search city", "Refresh", "Change units"]
+    },
+    "aiFeatures": {
+      "question": "Should AI-powered features be included?",
+      "type": "boolean",
+      "default": false,
+      "features": [
+        "Weather insights",
+        "Activity suggestions",
+        "Outfit recommendations"
+      ]
+    },
+    "weatherRadar": {
+      "question": "Should live weather radar be integrated?",
+      "type": "boolean",
+      "default": false
+    },
+    "satelliteImagery": {
+      "question": "Should satellite imagery be shown?",
+      "type": "boolean",
+      "default": false
+    },
+    "weatherCameras": {
+      "question": "Should live weather cameras be integrated?",
+      "type": "boolean",
+      "default": false
+    }
+  },
+
+  "customization": {
+    "userPreferences": {
+      "question": "Should users be able to customize their dashboard?",
+      "type": "boolean",
+      "default": true,
+      "options": ["Layout", "Visible widgets", "Color theme", "Units"]
+    },
+    "presets": {
+      "question": "Should preset configurations be available?",
+      "type": "boolean",
+      "default": false,
+      "presets": ["Minimal", "Standard", "Detailed", "Professional"]
+    },
+    "importExportSettings": {
+      "question": "Should users be able to import/export their settings?",
+      "type": "boolean",
+      "default": false
+    }
+  },
+
+  "buildInstructions": {
+    "description": "Step-by-step instructions for building the Weather Forecast Dashboard based on the answers above",
+    "steps": [
+      "1. Review and answer all configuration questions above",
+      "2. Set up project structure based on chosen framework and build tool",
+      "3. Install required dependencies (React, charting library, icons, etc.)",
+      "4. Configure API integration with chosen weather provider",
+      "5. Implement geolocation and location search features",
+      "6. Build current weather display component with selected metrics",
+      "7. Create forecast components (hourly/daily) based on configuration",
+      "8. Implement charts using selected charting library and configurations",
+      "9. Apply UI design with chosen theme, colors, and layout",
+      "10. Add responsive design for mobile and tablet",
+      "11. Implement selected features (auto-refresh, notifications, etc.)",
+      "12. Add data management and caching based on configuration",
+      "13. Implement accessibility features as specified",
+      "14. Set up security measures for API key protection",
+      "15. Add error handling and loading states",
+      "16. Optimize performance (lazy loading, minification, etc.)",
+      "17. Write tests if specified",
+      "18. Create documentation (README, comments, etc.)",
+      "19. Configure deployment pipeline",
+      "20. Deploy to chosen hosting platform"
+    ]
+  }
+}
