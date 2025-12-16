@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!-- WeatherWise Dashboard -->
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="WeatherWise - A real-time weather forecast dashboard with live data from OpenWeatherMap API">
+    <meta name="author" content="Aditya Kumar & Ashif Rahman">
+    <title>WeatherWise - Weather Forecast Dashboard</title>
+
+    <!-- External resources -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- JetBrains Mono font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <!-- Loading spinner -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading weather data...</p>
+    </div>
+
+    <!-- Main container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="material-icons">cloud</span>
+                    <h1>WeatherWise</h1>
+                </div>
+                <!-- Control buttons -->
+                <div class="header-controls">
+                    <button id="unitToggle" class="btn-icon" title="Toggle Units">
+                        <span class="material-icons">thermostat</span>
+                        <span id="unitLabel">°C</span>
+                    </button>
+                    <button id="refreshBtn" class="btn-icon" title="Refresh Data">
+                        <span class="material-icons">refresh</span>
+                    </button>
+                    <button id="locationBtn" class="btn-icon" title="Use My Location">
+                        <span class="material-icons">my_location</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search bar -->
+        <section class="search-section">
+            <div class="search-container">
+                <span class="material-icons search-icon">search</span>
+                <input type="text" id="citySearch" class="search-input" placeholder="Search for a city..."
+                    autocomplete="off">
+                <button id="searchBtn" class="btn-primary">Search</button>
+            </div>
+        </section>
+
+        <!-- Error notification -->
+        <div id="errorMessage" class="error-message" style="display: none;">
+            <span class="material-icons">error</span>
+            <span id="errorText"></span>
+            <button id="errorClose" class="btn-close">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+
+        <!-- Current weather -->
+        <section id="currentWeather" class="current-weather glass-card">
+            <div class="weather-main">
+                <!-- Location info -->
+                <div class="location-info">
+                    <h2 id="cityName">
+                        <span class="material-icons">location_on</span>
+                        <span id="cityText">--</span>
+                    </h2>
+                    <p id="weatherDescription">--</p>
+                    <p class="last-updated">
+                        <span class="material-icons">schedule</span>
+                        Last updated: <span id="lastUpdated">--</span>
+                    </p>
+                </div>
+                <!-- Temperature display -->
+                <div class="temperature-display">
+                    <div class="weather-icon-large" id="weatherIconLarge">
+                        <span class="material-icons">wb_sunny</span>
+                    </div>
+                    <div class="temp-main">
+                        <span id="currentTemp">--</span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                    <p class="feels-like">
+                        Feels like <span id="feelsLike">--</span><span class="temp-unit">°C</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Weather details -->
+            <div class="weather-details">
+                <div class="detail-item">
+                    <span class="material-icons">water_drop</span>
+                    <div class="detail-info">
+                        <p class="detail-label">Humidity</p>
+                        <p class="detail-value" id="humidity">--</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="material-icons">air</span>
+                    <div class="detail-info">
+                        <p class="detail-label">Wind Speed</p>
+                        <p class="detail-value" id="windSpeed">--</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="material-icons">compress</span>
+                    <div class="detail-info">
+                        <p class="detail-label">Pressure</p>
+                        <p class="detail-value" id="pressure">--</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="material-icons">visibility</span>
+                    <div class="detail-info">
+                        <p class="detail-label">Visibility</p>
+                        <p class="detail-value" id="visibility">--</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="material-icons">wb_twilight</span>
+                    <div class="detail-info">
+                        <p class="detail-label">Sunrise</p>
+                        <p class="detail-value" id="sunrise">--</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="material-icons">nightlight</span>
+                    <div class="detail-info">
+                        <p class="detail-label">Sunset</p>
+                        <p class="detail-value" id="sunset">--</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts -->
+        <section class="charts-section">
+            <!-- Temperature chart -->
+            <div class="chart-container glass-card">
+                <h3><span class="material-icons">show_chart</span> Temperature Forecast</h3>
+                <canvas id="temperatureChart"></canvas>
+            </div>
+            <!-- Humidity chart -->
+            <div class="chart-container glass-card">
+                <h3><span class="material-icons">water_drop</span> Humidity Forecast</h3>
+                <canvas id="humidityChart"></canvas>
+            </div>
+        </section>
+
+        <!-- 5-day forecast -->
+        <section class="forecast-section">
+            <h2 class="section-title">
+                <span class="material-icons">calendar_month</span>
+                5-Day Forecast
+            </h2>
+            <div id="forecastCards" class="forecast-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>
+                <span class="material-icons">code</span>
+                Built with Flask & Chart.js | Data from OpenWeatherMap
+            </p>
+            <p>© 2024 WeatherWise | Aditya Kumar & Ashif Rahman</p>
+        </footer>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>
