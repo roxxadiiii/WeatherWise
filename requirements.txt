@@ -1,0 +1,27 @@
+# WeatherWise Dependencies
+# Usage : pip install -r requirements.txt
+
+# Flask - The web framework that runs our app
+# Powers the web server and handles all API endpoints
+Flask==3.0.0
+
+# requests - Makes HTTP calls to external APIs
+# Used to fetch weather data from OpenWeatherMap
+requests==2.31.0
+
+# python-dotenv - Loads environment variables from .env file
+# Keeps your API keys secure and out of the code
+python-dotenv==1.0.0
+
+# flask-cors - Handles Cross-Origin Resource Sharing
+# Lets the frontend JavaScript talk to our backend API
+flask-cors==4.0.0
+
+# Werkzeug - Flask's underlying engine
+# Handles HTTP requests, routing, and the dev server
+Werkzeug==3.0.1
+
+# prequis:
+# 1. Create virtual environment: python -m venv .venv
+# 2. Activate it: source .venv/bin/activate.fish
+# 3. Install: pip install -r requirements.txt
