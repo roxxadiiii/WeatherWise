@@ -2,7 +2,7 @@
 WeatherWise - Flask Weather Application
 -----------------------------------------
 A real-time weather dashboard that fetches data from OpenWeatherMap API.
-Features caching, retry logic, and supports both city names and GPS coordinates.
+Features supports both city names and GPS coordinates.
 
 Authors: Aditya Kumar & Ashif Rahman
 License: GPL-3.0

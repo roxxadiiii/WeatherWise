@@ -1,12 +1,11 @@
 # WeatherWise Dependencies
 # Usage : pip install -r requirements.txt
 
-# Flask - The web framework that runs our app
-# Powers the web server and handles all API endpoints
+# for flask
 Flask==3.0.0
 
-# requests - Makes HTTP calls to external APIs
-# Used to fetch weather data from OpenWeatherMap
+# for requests 
+# handling api
 requests==2.31.0
 
 # python-dotenv - Loads environment variables from .env file
